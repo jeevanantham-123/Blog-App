@@ -1,0 +1,46 @@
+.blog-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.blog-card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.blog-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card h4 {
+    font-weight: bold;
+    color: #333;
+}
+
+.blog-card p {
+    color: #555;
+}
+
+.blog-card .badge {
+    width: fit-content;
+    font-size: 14px;
+}
+
+.blog-card .btn {
+    border-radius: 8px;
+    min-width: 90px;
+    font-weight: bold;
+}
+
+.blog-card .btn:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
