@@ -4,13 +4,13 @@ import axios from "axios";
 import "./Home.css";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
-import { FaHeart,FaBookmark,FaUser,FaFolder,FaEye, FaCalendarAlt} from "react-icons/fa";
+import { FaHeart, FaBookmark, FaUser, FaFolder, FaEye, FaCalendarAlt } from "react-icons/fa";
 
 function Home() {
 
     const [blogs, setBlogs] = useState([]);
 
-    const [bookmarkedBlogs,setBookmarkedBlogs] = useState([]);
+    const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
 
     const [search, setSearch] = useState("");
 
@@ -34,6 +34,7 @@ function Home() {
     useEffect(() => {
         fetchBlogs();
         fetchBookmarks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search, category, page]);
 
     const fetchBlogs = async () => {
@@ -53,17 +54,17 @@ function Home() {
         }
     };
 
-    const fetchBookmarks = async() => {
-        try{
+    const fetchBookmarks = async () => {
+        try {
             const token = localStorage.getItem("token");
 
-            if(!token) return;
+            if (!token) return;
 
             const res = await axios.get(
                 "http://localhost:5000/bookmarks",
                 {
-                    headers :{
-                        Authorization :`Bearer ${token}`
+                    headers: {
+                        Authorization: `Bearer ${token}`
                     }
                 }
             );
@@ -71,7 +72,7 @@ function Home() {
             setBookmarkedBlogs(res.data.map(blog => blog._id));
         }
 
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     };
@@ -216,27 +217,27 @@ function Home() {
 
                                             <h4 className="card-title">{blog.title}</h4>
 
-                                           <div className="d-flex justify-content-between mb-2">
-                                            <span className="badge bg-primary">
-                                                <FaFolder className="me-1"/>
-                                                {blog.category}
-                                            </span>
-                                            
-                                            <span className="text-muted">
-                                                <FaUser className="me-1"/>
-                                                {blog.createdBy?.name}
+                                            <div className="d-flex justify-content-between mb-2">
+                                                <span className="badge bg-primary">
+                                                    <FaFolder className="me-1" />
+                                                    {blog.category}
+                                                </span>
+
+                                                <span className="text-muted">
+                                                    <FaUser className="me-1" />
+                                                    {blog.createdBy?.name}
                                                 </span>
                                             </div>
 
                                             <p className="text-muted small">
-                                                <FaCalendarAlt className="me-1"/>
+                                                <FaCalendarAlt className="me-1" />
                                                 {new Date(blog.createdAt).toLocaleDateString("en-IN")}
                                             </p>
 
                                             <p>{blog.content.substring(0, 120)}...</p>
 
                                             <p className="text-danger fw-bold">
-                                                <FaHeart className="me-1"/>
+                                                <FaHeart className="me-1" />
                                                 {blog.likes} Likes &nbsp;
                                                 <FaEye className="ms-3 me-1 text-secondary" />
                                                 {blog.views} Views
@@ -260,20 +261,20 @@ function Home() {
 
                                                 <button
                                                     className={`btn btn-info btn-sm ${bookmarkedBlogs.includes(blog._id)
-                                                        ?"btn-warning":"btn-info"
-                                                    }`}
+                                                        ? "btn-warning" : "btn-info"
+                                                        }`}
                                                     onClick={() => bookmarkBlog(blog._id)}>
 
-                                                  {bookmarkedBlogs.includes(blog._id) ? (
-                                                    <>
-                                                    <FaBookmark className="me-1"/> Saved
-                                                    </> ):(
+                                                    {bookmarkedBlogs.includes(blog._id) ? (
                                                         <>
-                                                        <FaBookmark className="me-1" />
-                                                        save
+                                                            <FaBookmark className="me-1" /> Saved
+                                                        </>) : (
+                                                        <>
+                                                            <FaBookmark className="me-1" />
+                                                            save
                                                         </>
                                                     )
-                                                  }  
+                                                    }
                                                 </button>
 
                                                 {loggedInUserId === blog.createdBy?._id && (

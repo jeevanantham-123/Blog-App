@@ -17,6 +17,7 @@ function BlogDetails() {
     useEffect(() => {
         fetchBlog();
         fetchComment();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchBlog = async () => {
@@ -73,86 +74,86 @@ function BlogDetails() {
     };
 
     return (
-    <div className="container mt-5">
+        <div className="container mt-5">
 
-        <div className="card shadow-lg border-0">
+            <div className="card shadow-lg border-0">
 
-            {blog.image && (
-                <img
-                    src={`http://localhost:5000/uploads/${blog.image}`}
-                    alt={blog.title}
-                    className="blog-image"
-                />
-            )}
+                {blog.image && (
+                    <img
+                        src={`http://localhost:5000/uploads/${blog.image}`}
+                        alt={blog.title}
+                        className="blog-image"
+                    />
+                )}
 
-            <div className="card-body">
+                <div className="card-body">
 
-                <span className="badge bg-primary mb-3">
-                    {blog.category}
-                </span>
+                    <span className="badge bg-primary mb-3">
+                        {blog.category}
+                    </span>
 
-                <h1 className="blog-title">
-                    {blog.title}
-                </h1>
+                    <h1 className="blog-title">
+                        {blog.title}
+                    </h1>
 
-                <p className="text-muted">
-                    <strong>Author:</strong> {blog.createdBy?.name}
-                </p>
+                    <p className="text-muted">
+                        <strong>Author:</strong> {blog.createdBy?.name}
+                    </p>
 
-                <hr />
+                    <hr />
 
-                <div className="blog-content">
-                    {blog.content}
+                    <div className="blog-content">
+                        {blog.content}
+                    </div>
+
                 </div>
 
             </div>
 
+            <div className="comment-section mt-5">
+
+                <h3 className="mb-3">Comments</h3>
+
+                <textarea
+                    className="form-control"
+                    rows="4"
+                    placeholder="Write your comment..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+
+                <button
+                    className="btn btn-success mt-3"
+                    onClick={addComment}
+                >
+                    Post Comment
+                </button>
+
+                <hr />
+
+                {comments.length === 0 ? (
+                    <p className="text-muted">No comments yet.</p>
+                ) : (
+                    comments.map((comment) => (
+                        <div
+                            key={comment._id}
+                            className="card shadow-sm p-3 mb-3"
+                        >
+                            <h6 className="mb-1">
+                                {comment.createdBy?.name}
+                            </h6>
+
+                            <p className="mb-0">
+                                {comment.text}
+                            </p>
+                        </div>
+                    ))
+                )}
+
+            </div>
+
         </div>
-
-        <div className="comment-section mt-5">
-
-            <h3 className="mb-3">Comments</h3>
-
-            <textarea
-                className="form-control"
-                rows="4"
-                placeholder="Write your comment..."
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-
-            <button
-                className="btn btn-success mt-3"
-                onClick={addComment}
-            >
-                Post Comment
-            </button>
-
-            <hr />
-
-            {comments.length === 0 ? (
-                <p className="text-muted">No comments yet.</p>
-            ) : (
-                comments.map((comment) => (
-                    <div
-                        key={comment._id}
-                        className="card shadow-sm p-3 mb-3"
-                    >
-                        <h6 className="mb-1">
-                            {comment.createdBy?.name}
-                        </h6>
-
-                        <p className="mb-0">
-                            {comment.text}
-                        </p>
-                    </div>
-                ))
-            )}
-
-        </div>
-
-    </div>
-);
+    );
 }
 
 export default BlogDetails;
