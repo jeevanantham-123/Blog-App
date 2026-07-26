@@ -39,8 +39,11 @@ function Login() {
         }
 
         catch (error) {
-            toast.error("login failed");
-            console.log(error);
+            console.log(error.response);
+
+            toast.error(
+                error.response?.data?.message || "Login failed"
+            );
         }
     };
 

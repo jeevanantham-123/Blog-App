@@ -38,7 +38,7 @@ function BlogDetails() {
     const fetchComment = async () => {
         try {
             const response = await axios.get(
-                `http://blog-app-hjga.onrender.com/blogs/${id}/comments`
+                `https://blog-app-hjga.onrender.com/blogs/${id}/comments`
             );
 
             setComments(response.data);
@@ -55,7 +55,7 @@ function BlogDetails() {
             const token = localStorage.getItem("token");
 
             await axios.post(
-                `https://blog-app-hjga.onrender.com//blogs/${id}/comments`, { text },
+                `https://blog-app-hjga.onrender.com/blogs/${id}/comments`, { text },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
