@@ -6,7 +6,10 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin:"https://blog-app-1-i5j0.onrender.com",
+    credentials:true
+}));
 
 app.use(express.json());
 
@@ -368,6 +371,7 @@ app.put("/change-password",authMiddleware,async (req,res) =>
 });
 
 app.use(express.json());
+
 app.post("/register", async (req,res) => {
     try{
         const {name,email,password} = req.body;
