@@ -32,8 +32,14 @@ function Register() {
             toast.success(response.data.message);
             navigate("/login");
         } catch (error) {
-            toast.error("Registration failed");
-            console.log(error);
+            
+            console.log(error.response?.data);
+
+             console.log(error.response?.status);
+
+              console.log(error.message);
+
+              toast.error("Registration failed");
         }
     };
 
