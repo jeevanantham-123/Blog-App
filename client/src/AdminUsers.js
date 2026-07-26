@@ -16,7 +16,7 @@ function AdminUsers() {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:5000/admin/users",
+                "https://blog-app-hjga.onrender.com/admin/users",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

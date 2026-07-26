@@ -46,7 +46,7 @@ function CreateBlog() {
             formData.append("image", blog.image);
 
             const response = await axios.post(
-                "http://localhost:5000/create-blog",
+                "https://blog-app-hjga.onrender.com/create-blog",
                 formData,
                 {
                     headers: {

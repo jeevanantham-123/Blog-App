@@ -21,7 +21,7 @@ function EditBlog() {
     const fetchBlog = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:5000/blogs/${id}`
+                `https://blog-app-hjga.onrender.com/blogs/${id}`
             );
 
             setBlog(response.data);
@@ -44,7 +44,7 @@ function EditBlog() {
             const token = localStorage.getItem("token");
 
             await axios.put(
-                `http://localhost:5000/blogs/${id}`,
+                `https://blog-app-hjga.onrender.com/blogs/${id}`,
                 blog,
                 {
                     headers: {

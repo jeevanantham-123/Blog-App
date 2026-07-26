@@ -18,7 +18,7 @@ function MyBlogs() {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:5000/my-blogs",
+                "https://blog-app-hjga.onrender.com/my-blogs",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -58,7 +58,7 @@ function MyBlogs() {
 
                                 {blog.image && (
                                     <img
-                                        src={`http://localhost:5000/uploads/${blog.image}`}
+                                        src={`https://blog-app-hjga.onrender.com/uploads/${blog.image}`}
                                         className="card-img-top"
                                         alt={blog.title}
                                     />

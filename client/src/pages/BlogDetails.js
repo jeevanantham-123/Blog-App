@@ -23,7 +23,7 @@ function BlogDetails() {
     const fetchBlog = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:5000/blogs/${id}`
+                `https://blog-app-hjga.onrender.com/blogs/${id}`
             );
 
             console.log(response.data);
@@ -38,7 +38,7 @@ function BlogDetails() {
     const fetchComment = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:5000/blogs/${id}/comments`
+                `http://blog-app-hjga.onrender.com/blogs/${id}/comments`
             );
 
             setComments(response.data);
@@ -55,7 +55,7 @@ function BlogDetails() {
             const token = localStorage.getItem("token");
 
             await axios.post(
-                `http://localhost:5000/blogs/${id}/comments`, { text },
+                `https://blog-app-hjga.onrender.com//blogs/${id}/comments`, { text },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ function BlogDetails() {
 
                 {blog.image && (
                     <img
-                        src={`http://localhost:5000/uploads/${blog.image}`}
+                        src={`https://blog-app-hjga.onrender.com/uploads/${blog.image}`}
                         alt={blog.title}
                         className="blog-image"
                     />

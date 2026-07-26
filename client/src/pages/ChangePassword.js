@@ -23,7 +23,7 @@ function ChangePassword() {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                "http://localhost:5000/change-password",
+                "https://blog-app-hjga.onrender.com/change-password",
                 passwords,
                 {
                     headers: {

@@ -19,7 +19,7 @@ function Profile() {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:5000/profile",
+                "https://blog-app-hjga.onrender.com/profile",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -43,7 +43,7 @@ function Profile() {
             formData.append("profileImage", image);
 
             const response = await axios.put(
-                "http://localhost:5000/upload-profile-image",
+                "https://blog-app-hjga.onrender.com/upload-profile-image",
                 formData,
                 {
                     headers: {
@@ -71,7 +71,7 @@ function Profile() {
 
                         {user.profileImage ? (
                             <img
-                                src={`http://localhost:5000/uploads/${user.profileImage}`}
+                                src={`https://blog-app-hjga.onrender.com/uploads/${user.profileImage}`}
                                 alt="Profile"
                                 className="rounded-circle mx-auto mb-3"
                                 style={{

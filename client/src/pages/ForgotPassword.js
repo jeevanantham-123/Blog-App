@@ -13,7 +13,7 @@ function ForgotPassword() {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/forgot-password",
+                "https://blog-app-hjga.onrender.com/forgot-password",
                 form
             );
 
