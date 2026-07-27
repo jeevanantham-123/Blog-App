@@ -20,7 +20,7 @@ function Navbar() {
                 if (!token) return;
 
                 const response = await axios.get(
-                    "http://localhost:5000/profile",
+                    "https://blog-app-hjga.onrender.com/profile",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -87,18 +87,18 @@ function Navbar() {
                                         href="/#"
                                         role="button"
                                         data-bs-toggle="dropdown"
-                                    >{user.profileImage && (<img src={`http://localhost:5000/uploads/${user.profileImage}`}
+                                    >{user.profileImage && (<img src={`https://blog-app-hjga.onrender.com/uploads/${user.profileImage}`}
                                         alt="Profile"
                                         className="rounded-circle me-2"
 
                                         style={{
-                                            width:"35px",
-                                            height:"35px",
-                                            objectFit:"cover"
+                                            width: "35px",
+                                            height: "35px",
+                                            objectFit: "cover"
                                         }}
-                                        />
+                                    />
                                     )}
-                                        
+
                                         <span className="fw-bold">{user.name}</span>
                                     </a>
 
